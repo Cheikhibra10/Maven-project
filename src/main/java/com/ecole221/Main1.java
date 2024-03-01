@@ -12,7 +12,7 @@ public class Main1 {
         FiliereService filiereService = new FiliereService();
             if (!filiereService.findFiliereByLibelle(libelle)) {
                 filiereService.addFiliere(libelle);
-                System.out.println(libelle+ " est crée avec succès!");
+                System.out.println(libelle+ " est crée avec succès.");
             } else {
                 System.out.println(libelle+ " existe déjà!");
             }
