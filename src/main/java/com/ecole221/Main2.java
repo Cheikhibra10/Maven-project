@@ -14,7 +14,7 @@ public class Main2 {
 Scanner scanner = new Scanner(System.in);
         String libelle = "";
         while (true) {
-            System.out.println("Veuillez saisir le libellé de la classe");
+            System.out.println("Veuillez saisir le libellé de la classe:");
             libelle = scanner.nextLine();
             ClasseService classeService = new ClasseService();
             if (classeService.findClasseByLibelle(libelle) != null) {
