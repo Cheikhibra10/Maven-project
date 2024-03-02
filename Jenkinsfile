@@ -23,7 +23,7 @@ pipeline {
          stage('Build') {
             steps {
                 // Build the project
-                sh 'mvn build'
+                 sh 'mvn -B package'
             }
         }
     }
