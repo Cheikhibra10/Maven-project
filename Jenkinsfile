@@ -1,6 +1,10 @@
 pipeline {
     agent any
     stages {
+        tools{
+            jdk 'Jdk'
+            maven 'Maven'
+        }
         stage('Clean') {
             steps {
                 // Clean the project
