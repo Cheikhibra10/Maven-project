@@ -7,12 +7,7 @@ pipeline {
                 sh 'mvn -B clean'
             }
         }
-        stage('Build') {
-            steps {
-                // Build the project
-                sh 'mvn -B -DskipTests package'
-            }
-        }
+       
         stage('Test') { 
             steps {
                 // Run tests
@@ -23,6 +18,12 @@ pipeline {
                     // Publish test results
                     junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
                 }
+            }
+        }
+         stage('Build') {
+            steps {
+                // Build the project
+                sh 'mvn -B -DskipTests package'
             }
         }
     }
