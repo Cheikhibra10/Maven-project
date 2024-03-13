@@ -1,9 +1,8 @@
 pipeline {
     agent any
        tools{
-           git 'newGit'
-            jdk 'newjdk'
-            maven 'newmaven'
+            jdk 'Jdk'
+            maven 'Maven'
         }
     stages {
         stage('Clean') {
