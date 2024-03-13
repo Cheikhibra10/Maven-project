@@ -1,9 +1,9 @@
 pipeline {
     agent any
-       tools{
-            jdk 'Jdk'
-            maven 'Maven'
-        }
+    tools {
+        jdk 'Jdk'
+        maven 'Maven'
+    }
     stages {
         stage('Clean') {
             steps {
@@ -11,7 +11,6 @@ pipeline {
                 sh 'mvn -B clean'
             }
         }
-       
         stage('Test') { 
             steps {
                 // Run tests
@@ -24,10 +23,25 @@ pipeline {
                 }
             }
         }
-         stage('Build') {
+        stage('Build') {
             steps {
                 // Build the project
-                 sh 'mvn -B package'
+                sh 'mvn -B package'
+            }
+        }
+        stage('Docker Build') {
+            steps {
+                // Build Docker image
+                sh 'docker build -t cheikhdev10/java_maven_221 .'
+            }
+        }
+        stage('Docker Push') {
+            steps {
+                // Push Docker image to repository
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'cheikhdev10', passwordVariable: 'Mbectemi@2022')]) {
+                    sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                    sh 'docker push cheikhdev10/java_maven_221'
+                }
             }
         }
     }
